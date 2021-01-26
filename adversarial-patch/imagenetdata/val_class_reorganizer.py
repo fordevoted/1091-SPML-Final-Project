@@ -1,12 +1,12 @@
 import os
 from collections import defaultdict
-
+import shutil
 def pad2File(num):
     _len = len(str(num))
     zero = '0'*(5-_len)
     return prefix+zero+str(num)+'.JPEG'
 
-gTruthPath = './ILSVRC2012_devkit_t12/data/ILSVRC2012_validation_ground_truth.txt'
+gTruthPath = './ILSVRC2012_validation_ground_truth.txt'
 valPath = './val'
 c2fPath = 'c2f.txt'
 prefix = 'ILSVRC2012_val_000'
@@ -32,11 +32,11 @@ with open(c2fPath, 'r') as f:
     while (line:=f.readline()):
         files = line.split(',')
         if not os.path.exists('val/{}/'.format(_class)):
-            os.mkdir('val/{}/'.format(_class))
+            os.makedirs('val/{}/'.format(_class))
         for fi in files:
             fi = fi.strip()
-            oldPath = 'val/{f}'.format(f=fi)
-            newPath = 'val/{c}/{f}'.format(c=_class, f=fi)
+            oldPath = './val/{f}'.format(f=fi)
+            newPath = './val/{c}/{f}'.format(c=_class, f=fi)
             newPath = newPath.replace('JPEG','jpeg')
             os.rename(oldPath, newPath)
         _class += 1

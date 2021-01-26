@@ -265,7 +265,7 @@ def attack(x, patch, mask):
 
         adv_out_probs, adv_out_labels = adv_out.max(1)
 
-        Loss = 1 * -adv_out[0][target] + 1 * L_dark_channel(adv_patch) + 5 * L_tv(adv_patch) + 5 * L_spa(adv_patch)
+        Loss = 1 * -adv_out[0][target] + 5 * L_spa(adv_patch) + 5 * L_tv(adv_patch) #+ 1 * L_dark_channel(adv_patch)
         print("loss check: advout: {} Ldc: {} Lcc: {} Ltv: {} Lspa: {}".format(-adv_out[0][target].cpu().detach().numpy(),
                                                                                L_dark_channel(adv_patch).cpu().detach().numpy(),
                                                                                L_cc(adv_patch).cpu().detach().numpy(),
