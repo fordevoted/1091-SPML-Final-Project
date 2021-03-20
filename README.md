@@ -1,4 +1,4 @@
-# 1091-SPML-Final-Project
+# NTU-1091-SPML: Generation of Adversarial Patch: Variation and Application
 1091 NTU CSIE SPML Final Project
 
 ## Ovewview 
